@@ -7,7 +7,11 @@ ENV DOCKERIZE_VERSION v0.3.0
 # Replace shell with bash so we can source files
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
-RUN apt-get update
+# Install git and ssh
+RUN apt-get update --fix-missing
+RUN apt-get install -y git \
+    openssh-server
+
 RUN apt-get install -y curl \
     wget \
     libssl-dev
@@ -49,4 +53,5 @@ RUN echo "nodeJs $(node -v)" \
   && echo "npm $(npm -v)" \
   && echo "yarn $(yarn -v)" \
   && java -version \
-  && google-chrome --version
+  && google-chrome --version \
+  && git --version

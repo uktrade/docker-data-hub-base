@@ -1,4 +1,4 @@
-# Java, nodeJs, yarn, chrome and dockerize
+# Java, nodeJs, yarn, chrome, dockerize and git
 A docker file to support [data hub frontend](https://github.com/uktrade/data-hub-frontend/) with [data hub leeloo](https://github.com/uktrade/data-hub-leeloo/)
 This docker is based on [openjdk](https://github.com/docker-library/openjdk) and supports:
 
@@ -8,6 +8,7 @@ This docker is based on [openjdk](https://github.com/docker-library/openjdk) and
 - Yarn `1.0.2`
 - Google chrome `stable`
 - dockerize `v0.3.0`
+- git
 
 Intended for use in a [Circleci 2.0](https://circleci.com/) workflow
 
