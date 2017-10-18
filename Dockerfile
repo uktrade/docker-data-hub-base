@@ -33,6 +33,7 @@ RUN apt-get install -y libpq-dev \
 
 RUN wget http://ftp.de.debian.org/debian/pool/main/libp/libpng/libpng12-0_1.2.50-2+deb8u3_amd64.deb
 RUN dpkg -i libpng12-0_1.2.50-2+deb8u3_amd64.deb
+RUN rm libpng12-0_1.2.50-2+deb8u3_amd64.deb
 
 # Install Java 8
 RUN apt-get install -y openjdk-8-dbg
@@ -43,6 +44,7 @@ RUN apt-get install -y xdg-utils \
 
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 RUN dpkg -i google-chrome-stable_current_amd64.deb
+RUN rm google-chrome-stable_current_amd64.deb
 
 # Install dockerise
 RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
