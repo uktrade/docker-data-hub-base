@@ -3,7 +3,7 @@ A docker file to support [data hub frontend](https://github.com/uktrade/data-hub
 This docker is based on [openjdk](https://github.com/docker-library/openjdk) and supports:
 
 - Java `8`
-- nodeJs `8.x`
+- nodeJs `8.5.0`
 - npm
 - Yarn `1.0.2`
 - Google chrome `stable`
