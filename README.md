@@ -3,12 +3,11 @@ A docker file to support [data hub frontend](https://github.com/uktrade/data-hub
 This docker is based on [openjdk](https://github.com/docker-library/openjdk) and supports:
 
 - Java `8`
-- nodeJs `8.5.0`
+- nodeJs `8.9.4`
 - npm
-- Yarn `1.0.2`
+- Yarn `1.2.1`
 - Google chrome `stable`
 - dockerize `v0.3.0`
-- git
 
 Intended for use in a [Circleci 2.0](https://circleci.com/) workflow
 
