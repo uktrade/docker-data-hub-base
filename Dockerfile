@@ -1,11 +1,11 @@
-FROM ubuntu:17.04
+FROM ubuntu:16.04
 
 MAINTAINER tools@digital.trade.gov.uk
 
 ENV LIBPNG_VERSION 0_1.2.50-2
 ENV NVM_DIR /usr/local/nvm
-ENV NODE_VERSION 8.5.0
-ENV YARN_VERSION 1.0.2
+ENV NODE_VERSION 8.9.4
+ENV YARN_VERSION 1.2.1
 ENV NPM_CONFIG_LOGLEVEL info
 ENV DOCKERIZE_VERSION v0.3.0
 
@@ -14,27 +14,16 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 RUN apt-get update
 
-# Install packages needed for this file
-RUN apt-get install -y curl wget
-
 # Install packages needed by datahub frontend npm dependencies
-RUN apt-get install -y libssl-dev \
-    libpq-dev \
+RUN apt-get install -y curl \
+    wget \
+    libssl-dev \
     libpng-dev \
     libgconf-2-4 \
     libxss1 \
     libappindicator1 \
     libindicator7 \
-    fonts-liberation \
-    lsb-release
-
-# Install lib png
-RUN wget http://ftp.de.debian.org/debian/pool/main/libp/libpng/libpng12-$LIBPNG_VERSION+deb8u3_amd64.deb
-RUN dpkg -i libpng12-$LIBPNG_VERSION+deb8u3_amd64.deb
-RUN rm libpng12-$LIBPNG_VERSION+deb8u3_amd64.deb
-
-# Install git and ssh
-RUN apt-get install -y git openssh-server
+    fonts-liberation
 
 # Install nvm with node and npm
 RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.30.1/install.sh | bash \
@@ -45,11 +34,15 @@ RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.30.1/install.sh | b
     && npm install -g yarn@$YARN_VERSION
 
 # Install Java 8
-RUN apt-get install -y openjdk-8-dbg
+RUN apt-get install -y openjdk-8-jre
 
-# Install chrome and dependencies (for chrome driver to use)
-RUN apt-get install -y xdg-utils libgtk-3-0
-RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+# Install chrome dependencies (for chrome driver to use)
+RUN apt-get install -y xdg-utils \
+    libgtk-3-0 \
+    lsb-release
+
+# Install chrome
+RUN curl https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O
 RUN dpkg -i google-chrome-stable_current_amd64.deb
 RUN rm google-chrome-stable_current_amd64.deb
 
@@ -63,5 +56,4 @@ RUN source $NVM_DIR/nvm.sh \
   && echo "npm $(npm -v)" \
   && echo "yarn $(yarn -v)" \
   && java -version \
-  && google-chrome --version \
-  && git --version
+  && google-chrome --version
