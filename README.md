@@ -5,7 +5,7 @@ This docker is based on [openjdk](https://github.com/docker-library/openjdk) and
 - Java `8`
 - nodeJs `8.11.1`
 - npm
-- Yarn `1.6.0`
+- Yarn `1.15.2`
 - Google chrome `stable`
 - dockerize `v0.3.0`
 
