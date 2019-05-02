@@ -14,6 +14,7 @@ RUN apt-get install -y curl \
     wget \
     libssl-dev \
     libpng-dev \
+    libpng16-16 \
     libgconf-2-4 \
     libxss1 \
     libappindicator1 \
